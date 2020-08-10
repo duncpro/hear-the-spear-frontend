@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Almost finished</h1>
+<form [formGroup]="form" (submit)="onSubmit()">
+  <div mat-dialog-content>
+    <p>Enter your student email address one last time.</p>
+    <mat-form-field appearance="standard">
+      <mat-label>Student Email Address</mat-label>
+      <input matInput placeholder="abc123@my.fsu.edu" formControlName="emailAddress">
+      <mat-error *ngIf="form.get('emailAddress').invalid">
+        Not a valid email address.
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button type="submit">
+      Next
+    </button>
+  </div>
+</form>

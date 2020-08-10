@@ -1,0 +1,11 @@
+/* Organize the list into a columns that are each the height of the viewport. */
+/* Very good use of screen real estate */
+.wide-list {
+  /* Remove the default padding fro mat-list */
+  /* Prevent the browser from scrolling vertically */
+  padding-top: 0;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}

@@ -1,0 +1,111 @@
+// Generated using http://mcg.mbitson.com/
+$fsu-garnet: (
+  50 : #efe6e8,
+  100 : #d7c1c6,
+  200 : #bc97a0,
+  300 : #a16d79,
+  400 : #8c4e5d,
+  500 : #782f40,
+  600 : #702a3a,
+  700 : #652332,
+  800 : #5b1d2a,
+  900 : #48121c,
+  A100 : #ff8398,
+  A200 : #ff506d,
+  A400 : #ff1d43,
+  A700 : #ff032d,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+$fsu-gold: (
+  50 : #f9f6f1,
+  100 : #f0eadb,
+  200 : #e7dcc4,
+  300 : #ddcdac,
+  400 : #d5c39a,
+  500 : #ceb888,
+  600 : #c9b180,
+  700 : #c2a875,
+  800 : #bca06b,
+  900 : #b09158,
+  A100 : #ffffff,
+  A200 : #fff5e4,
+  A400 : #ffe3b1,
+  A700 : #ffd997,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #000000,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$HearTheSpear2-primary: mat-palette($fsu-gold);
+$HearTheSpear2-accent: mat-palette($fsu-garnet);
+
+// The warn palette is optional (defaults to red).
+$HearTheSpear2-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$HearTheSpear2-theme: mat-dark-theme((
+  color: (
+    primary: $HearTheSpear2-primary,
+    accent: $HearTheSpear2-accent,
+    warn: $HearTheSpear2-warn,
+  )
+));
+
+// Provide an easy way to use the accent color when styling thru css.
+.accent-color {
+  color: mat-color($HearTheSpear2-accent);
+}
+
+// Provide an easy way to use the accent color when styling thru css.
+.primary-color {
+  color: mat-color($HearTheSpear2-primary);
+}
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($HearTheSpear2-theme);

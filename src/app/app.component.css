@@ -1,0 +1,64 @@
+/* Force the element to fill all available screen space. */
+.fullscreen {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.sidenav button {
+  /* Arrange the buttons in a vertical list, rather than a horizontal one. */
+  display: block;
+
+  /* Make all buttons fill the maximum amount of horizontal space available. */
+  /* Bigger buttons are easier to click on, plus, this keeps the hover effect completely symmetrical. */
+  width: 100%;
+
+  /* Make the buttons a little taller. This makes the buttons easier to click on and the UI look less cramped. */
+  height: 50px;
+
+  /* This is the main way to navigate around the site, it should be big and easy to spot. */
+  font-size: x-large;
+}
+
+.sidenav {
+  /* Make the sidebar nice and spacious. Anything narrower than this feels cramped to me. */
+  width: 300px;
+}
+
+/* Add a seminole-y font for use throughout the app. */
+@font-face {
+  font-family: 'noles';
+  src: url('../assets/noles-font.otf');
+}
+
+.app-title {
+  /* Expand the element to fill all available space */
+  width: 100%;
+
+  /* Now center the text inside of the expanded element */
+  text-align: center;
+
+  /* Use the seminole-y font in the app's title bar */
+  font-family: 'noles', serif;
+
+  /* Make the title big for good branding */
+  font-size: xx-large;
+}
+
+/* Center the logo in the sidenav */
+.center-logo {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+
+  /* TODO: Resize the actual image file */
+  width: 60%;
+}
+
+.open-sidenav-button {
+  /* The sidenav button should not effect the other items in the toolbar. */
+  /* Most impportantly, the centered title */
+  position: fixed;
+}

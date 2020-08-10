@@ -1,0 +1,60 @@
+[debug] [2020-08-10T11:09:56.810Z] ----------------------------------------------------------------------
+[debug] [2020-08-10T11:09:56.813Z] Command:       /usr/local/Cellar/node/14.0.0/bin/node /usr/local/bin/firebase deploy -P prod
+[debug] [2020-08-10T11:09:56.814Z] CLI Version:   8.7.0
+[debug] [2020-08-10T11:09:56.815Z] Platform:      darwin
+[debug] [2020-08-10T11:09:56.815Z] Node Version:  v14.0.0
+[debug] [2020-08-10T11:09:56.817Z] Time:          Mon Aug 10 2020 07:09:56 GMT-0400 (Eastern Daylight Time)
+[debug] [2020-08-10T11:09:56.817Z] ----------------------------------------------------------------------
+[debug] [2020-08-10T11:09:56.817Z] 
+[debug] [2020-08-10T11:09:56.838Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-08-10T11:09:56.839Z] > authorizing via signed-in user
+[debug] [2020-08-10T11:09:56.839Z] [iam] checking project hearthespear-172d0 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2020-08-10T11:09:56.843Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/hearthespear-172d0:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2020-08-10T11:09:57.266Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 10 Aug 2020 11:09:57 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=191","alt-svc":"h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-08-10T11:09:57.268Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/hearthespear-172d0  
+ 
+[debug] [2020-08-10T11:09:57.565Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 10 Aug 2020 11:09:57 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'hearthespear-172d0'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2020-08-10T11:09:57.568Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/hearthespear-172d0/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2020-08-10T11:09:58.486Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 10 Aug 2020 11:09:58 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[hearthespear-172d0]: beginning deploy... 
+[info] i  hosting[hearthespear-172d0]: found 15 files in public 
+[debug] [2020-08-10T11:09:58.497Z] [hosting] hash cache [cHVibGlj] stored for 15 files
+[debug] [2020-08-10T11:09:58.498Z] [hosting][hash queue][FINAL] {"max":1,"min":0,"avg":0,"active":0,"complete":15,"success":15,"errored":0,"retried":0,"total":15,"elapsed":4}
+[debug] [2020-08-10T11:09:58.498Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/hearthespear-172d0/versions/674eff194bd26f18:populateFiles  
+ <request body omitted>
+[debug] [2020-08-10T11:09:59.042Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 10 Aug 2020 11:09:59 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-08-10T11:09:59.042Z] [hosting][populate queue][FINAL] {"max":546,"min":546,"avg":546,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":546}
+[debug] [2020-08-10T11:09:59.043Z] [hosting] uploads queued: 0
+[debug] [2020-08-10T11:09:59.043Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1597057799043}
+[info] ✔  hosting[hearthespear-172d0]: file upload complete 
+[debug] [2020-08-10T11:09:59.044Z] [hosting] deploy completed after 557ms
+[debug] [2020-08-10T11:09:59.123Z] [
+  {
+    "config": {
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "hearthespear-172d0"
+    },
+    "site": "hearthespear-172d0",
+    "version": "sites/hearthespear-172d0/versions/674eff194bd26f18"
+  }
+]
+[info] i  hosting[hearthespear-172d0]: finalizing version... 
+[debug] [2020-08-10T11:09:59.125Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/hearthespear-172d0/versions/674eff194bd26f18?updateMask=status  
+ {"status":"FINALIZED"}

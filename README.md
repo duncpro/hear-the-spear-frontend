@@ -1,6 +1,12 @@
 # HearTheSpear2
 
+This is the front-end code for HearTheSpear. The Florida State University music chart.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
+
+# Caveats
+- User can register the same spotify account under as many emails as they want.
+- User can register with non-fsu email if they bypass the front-end validation.
 
 ## Development server
 
@@ -13,6 +19,12 @@ Run `ng generate component component-name` to generate a new component. You can 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Deployment
+
+To deploy to the production instance, run `firebase deploy -P prod`. Make sure to add the `--prod` flag when building the production version.
+
+To deploy to the development instance, run `firebase deploy -P dev`.
 
 ## Running unit tests
 

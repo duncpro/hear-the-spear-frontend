@@ -1,0 +1,17 @@
+<div *ngIf="donePopulatingList">
+  <div *ngIf="!useSuperWideList" style="padding-top: 10px;">
+    The most popular songs at Florida State University right now.
+    <span style="cursor: pointer;" (click)="showAboutPage()"><b><u>Learn more</u></b></span>
+  </div>
+  <mat-list class="{{ this.useSuperWideList ? 'wide-list' : '' }}">
+    <div *ngFor="let track of topTracks; index as i">
+      <app-song-list-item [track]="track" rank="{{ i + 1 }}">
+      </app-song-list-item>
+    </div>
+    <app-list-footer></app-list-footer>
+  </mat-list>
+</div>
+
+<mat-spinner *ngIf="!donePopulatingList" style="margin-left: auto; margin-right: auto; margin-top: 35%;">
+
+</mat-spinner>

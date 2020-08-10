@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-header>
+    <mat-icon mat-card-avatar>share</mat-icon>
+    <mat-card-title>
+      Did you enjoy this list?
+    </mat-card-title>
+    <mat-card-subtitle>
+      Share it with other seminoles.
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+      <button
+        *ngIf="isShareSheetAvailable()"
+        mat-stroked-button
+        (click)="launchShareSheet()">
+        Share
+      </button>
+      <button
+        *ngIf="!isShareSheetAvailable()"
+        mat-stroked-button
+        (click)="copyLink()"
+      >
+        <mat-icon>link</mat-icon>
+        Copy Link
+      </button>
+
+  </mat-card-content>
+</mat-card>

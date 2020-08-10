@@ -1,0 +1,10 @@
+<a href="{{ this.artist.link }}" target="_blank">
+  <mat-list-item>
+    <p mat-list-icon style="padding-right: 15px; padding-bottom: 15px;" class="primary-color">
+      {{ this.rank }}.
+    </p>
+    <img mat-list-avatar src="{{ this.artist.profilePicture }}"/>
+    <span mat-line style="text-align: left">{{ this.artist.name.substring(0, 40) }}</span>
+    <span mat-line>{{ this.artist.count }} listener{{ this.artist.count > 1 ? 's' : '' }}</span>
+  </mat-list-item>
+</a>
