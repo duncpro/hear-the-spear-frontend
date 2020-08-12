@@ -4,12 +4,11 @@ import { Subscription } from 'rxjs';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ScreenSizeService } from './screen-size.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFireFunctions } from '@angular/fire/functions';
 import { environment } from '../environments/environment';
 import { MatDialog } from '@angular/material/dialog';
 import { ThankYouForContributingDialogComponent } from './thank-you-for-contributing-dialog/thank-you-for-contributing-dialog.component';
-import { MatSpinner } from '@angular/material/progress-spinner';
 import { EmailReEntryDialogComponent } from './email-re-entry-dialog/email-re-entry-dialog.component';
+import { NowPlayingService } from './now-playing.service';
 
 @Component({
   selector: 'app-root',
@@ -43,13 +42,16 @@ export class AppComponent implements OnDestroy, OnInit {
    * The primary navigation screen for Hear The Spear.
    */
   queryParamsSubscription: Subscription;
+  showNowPlayingNavItem = false;
+  private cancelNowPlayingSubscription: () => void;
   @ViewChild('sidenav') sidenav: MatSidenav;
   constructor(
     private router: Router,
     private screenSizeService: ScreenSizeService,
     private fireAuth: AngularFireAuth,
     private route: ActivatedRoute,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private nowPlayingService: NowPlayingService
   ) {
     this.routerSubscription = router.events.subscribe(this.onRouterEvent.bind(this));
     this.screenSizeSubscription = this.screenSizeService.shouldUseMobileUI
@@ -71,8 +73,9 @@ export class AppComponent implements OnDestroy, OnInit {
     this.routerSubscription.unsubscribe();
     this.screenSizeSubscription.unsubscribe();
     this.queryParamsSubscription.unsubscribe();
+    this.cancelNowPlayingSubscription();
   }
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     this.queryParamsSubscription = this.route.queryParams.subscribe(params => {
       if (params.showContributionSuccessMessage) {
         // Thank the user for contributing to our data set.
@@ -86,7 +89,33 @@ export class AppComponent implements OnDestroy, OnInit {
         });
       }
     });
-    await this.finishFirebaseSignIn();
+    // Only show the "Now Playing" navigation item if at least one person is
+    // listening to music right now.
+    this.cancelNowPlayingSubscription = this.nowPlayingService.currentlyPlayingSongs
+      .onSnapshot(snapshot => {
+        // In case we want to clean out the nowPlayingSongs database collection in the future.
+        // Right now it will always have songs in it, because I've used it before.
+        if (snapshot.empty) {
+          this.showNowPlayingNavItem = false;
+          return;
+        }
+        // We know that the nowPlayingService automatically orders are songs by active listener count in descending order.
+        // Therefore, if the first song in the list has a count of zero, there is no one listening to music right now.
+        if (!snapshot.docs[0].data()?.count) {
+          this.showNowPlayingNavItem = false;
+          return;
+        }
+        this.showNowPlayingNavItem = true;
+      });
+    this.finishFirebaseSignIn()
+      .then(() => {
+        console.log('Successfully completed Firebase authorization procedure.');
+        console.log('A user may or may not have been authorized.');
+      })
+      .catch(error => {
+        console.error('Error occurred during Firebase authorization procedure.');
+        console.error(error);
+      });
   }
   async finishFirebaseSignIn(): Promise<void> {
     if (!await this.fireAuth.isSignInWithEmailLink(window.location.href)) {
@@ -102,15 +131,11 @@ export class AppComponent implements OnDestroy, OnInit {
       // TODO: Turn this into a pretty Angular Material dialog.
       email = await this.dialog.open(EmailReEntryDialogComponent).afterClosed().toPromise();
     }
-    try {
-      const { user } = await this.fireAuth.signInWithEmailLink(email, window.location.href);
-      // The user has been successfully signed in.
-      // Clear the email address that we saved earlier.
-      window.localStorage.removeItem('hearTheSpearEmailForSignIn');
-      await this.startSpotifyAuthProcedure(user.uid);
-    } catch (error) {
-      console.error(error);
-    }
+    const { user } = await this.fireAuth.signInWithEmailLink(email, window.location.href);
+    // The user has been successfully signed in.
+    // Clear the email address that we saved earlier.
+    window.localStorage.removeItem('hearTheSpearEmailForSignIn');
+    await this.startSpotifyAuthProcedure(user.uid);
   }
   /**
    * Sends the user to the Spotify 3rd party application authorization service.
@@ -120,11 +145,11 @@ export class AppComponent implements OnDestroy, OnInit {
    */
   async startSpotifyAuthProcedure(uid: string): Promise<void> {
     // The OAuth scope that our app needs.
-    // As stated in the privacy policy, we only request access to your most frequently listened music.
-    const scope = 'user-top-read';
+    // As stated in the privacy policy, request access to your most frequently listened music, and your currently playing track.
+    const scope = 'user-top-read user-read-currently-playing';
     // The URI that Spotify will ping after the user has completed the 3rd-party app authorization procedure.
     const redirectUri = encodeURI(environment.spotifyCredentialsReceiverUrl);
     // Send the user's web browser to Spotify's auth portal.
-    window.location.href = `https://accounts.spotify.com/authorize?client_id=${environment.spotify.clientId}&response_type=code&scope=${scope}&redirect_uri=${redirectUri}&state=${uid}`;
+    window.location.href = `https://accounts.spotify.com/authorize?client_id=${environment.spotify.clientId}&response_type=code&scope=${encodeURIComponent(scope)}&redirect_uri=${redirectUri}&state=${uid}`;
   }
 }

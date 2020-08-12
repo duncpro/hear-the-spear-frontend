@@ -62,3 +62,8 @@
   /* Most impportantly, the centered title */
   position: fixed;
 }
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}

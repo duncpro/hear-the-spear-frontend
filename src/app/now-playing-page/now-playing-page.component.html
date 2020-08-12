@@ -1,0 +1,17 @@
+<div *ngIf="donePopulatingList">
+  <div *ngIf="!useSuperWideList" style="padding-top: 10px;">
+    What we're listening to right now.
+    <span style="cursor: pointer;" (click)="showAboutPage()"><b><u>Learn more</u></b></span>
+  </div>
+  <mat-list class="{{ this.useSuperWideList ? 'wide-list' : '' }}">
+    <div *ngFor="let track of tracks; index as i">
+      <app-song-list-item [track]="track" [showCount]="true" [showAnimation]="true">
+      </app-song-list-item>
+    </div>
+    <app-list-footer></app-list-footer>
+  </mat-list>
+</div>
+
+<mat-spinner *ngIf="!donePopulatingList" style="margin-left: auto; margin-right: auto; margin-top: 35%;">
+
+</mat-spinner>

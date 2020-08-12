@@ -29,6 +29,10 @@ import { environment } from '../environments/environment';
 import { ThankYouForContributingDialogComponent } from './thank-you-for-contributing-dialog/thank-you-for-contributing-dialog.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { EmailReEntryDialogComponent } from './email-re-entry-dialog/email-re-entry-dialog.component';
+import { NowPlayingPageComponent } from './now-playing-page/now-playing-page.component';
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+import { LottiePlayer } from 'ngx-lottie/src/symbols';
 
 @NgModule({
   declarations: [
@@ -45,6 +49,7 @@ import { EmailReEntryDialogComponent } from './email-re-entry-dialog/email-re-en
     ListFooterComponent,
     ThankYouForContributingDialogComponent,
     EmailReEntryDialogComponent,
+    NowPlayingPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,9 +66,16 @@ import { EmailReEntryDialogComponent } from './email-re-entry-dialog/email-re-en
     MatFormFieldModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    LottieModule.forRoot({ player: playerFactory }),
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// Note we need a separate function as it's required
+// by the AOT compiler.
+export function playerFactory(): LottiePlayer {
+  return player;
+}
