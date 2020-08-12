@@ -1,15 +1,32 @@
 <div *ngIf="donePopulatingList">
-  <div *ngIf="!useSuperWideList" style="padding-top: 10px;">
-    What we're listening to right now.
-    <span style="cursor: pointer;" (click)="showAboutPage()"><b><u>Learn more</u></b></span>
-  </div>
-  <mat-list class="{{ this.useSuperWideList ? 'wide-list' : '' }}">
-    <div *ngFor="let track of tracks; index as i">
-      <app-song-list-item [track]="track" [showCount]="true" [showAnimation]="true">
-      </app-song-list-item>
+  <div *ngIf="tracks.length > 0">
+    <div *ngIf="!useSuperWideList" style="padding-top: 10px;">
+      What we're listening to right now.
+      <span style="cursor: pointer;" (click)="showAboutPage()"><b><u>Learn more</u></b></span>
     </div>
-    <app-list-footer></app-list-footer>
-  </mat-list>
+    <mat-list class="{{ this.useSuperWideList ? 'wide-list' : '' }}">
+      <div *ngFor="let track of tracks; index as i">
+        <app-song-list-item [track]="track" [showCount]="true" [showAnimation]="true">
+        </app-song-list-item>
+      </div>
+      <app-list-footer></app-list-footer>
+    </mat-list>
+  </div>
+
+  <div *ngIf="tracks.length < 1" style="width: 100%">
+    <div  style="display: flex; align-items: center; height: 85vh; justify-content: center;">
+      <div>
+        <mat-icon style="font-size: 150px;">volume_off</mat-icon>
+        <h1>It's quiet right now. </h1>
+        <p>...too quiet...</p>
+        <p style="cursor: pointer" (click)="showSignUpDialog()">
+          <u><b>Link your account</b></u>
+          and put on some music!
+        </p>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <mat-spinner *ngIf="!donePopulatingList" style="margin-left: auto; margin-right: auto; margin-top: 35%;">

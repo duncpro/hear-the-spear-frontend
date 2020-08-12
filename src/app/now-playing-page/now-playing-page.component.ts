@@ -4,6 +4,8 @@ import { Track } from '../track';
 import { Router } from '@angular/router';
 import { ScreenSizeService } from '../screen-size.service';
 import { NowPlayingService } from '../now-playing.service';
+import { MatDialog } from '@angular/material/dialog';
+import { InputEmailAddressDialogComponent } from '../input-email-address-dialog/input-email-address-dialog.component';
 
 @Component({
   selector: 'app-now-playing-page',
@@ -20,6 +22,7 @@ export class NowPlayingPageComponent implements OnInit, OnDestroy {
     private nowPlayingService: NowPlayingService,
     private router: Router,
     private screenSizeService: ScreenSizeService,
+    private dialog: MatDialog
   ) { }
   ngOnInit(): void {
     this.screenSizeSubscription = this.screenSizeService.shouldUseMobileUI.subscribe(
@@ -43,6 +46,9 @@ export class NowPlayingPageComponent implements OnInit, OnDestroy {
   }
   async showAboutPage(): Promise<void> {
     await this.router.navigateByUrl('/about');
+  }
+  showSignUpDialog(): void {
+    this.dialog.open(InputEmailAddressDialogComponent);
   }
   ngOnDestroy(): void {
     this.unsubscribeFromDatabase();

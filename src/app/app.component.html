@@ -20,7 +20,7 @@
         color="{{ this.currentRoute.startsWith('top-artists') ? 'primary' : '' }}"
       >Popular Artists</button>
     </a>
-    <a routerLink="now-playing" [class.disabled]="!showNowPlayingNavItem">
+    <a [routerLink]="showNowPlayingNavItem ? 'now-playing' : currentRoute">
       <button
         mat-button
         color="{{ this.currentRoute.startsWith('now-playing') ? 'primary' : '' }}"
