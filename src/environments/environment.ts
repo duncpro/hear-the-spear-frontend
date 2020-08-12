@@ -15,7 +15,7 @@ export const environment = {
     measurementId: 'G-178D600RGZ'
   },
   spotify: {
-    clientId: 'c245177cf29a45eeb01b3cd79f66c682'
+    clientId: '9ddace80166c4531a3724ed47ecdfb15'
   },
   spotifyCredentialsReceiverUrl: 'https://us-central1-hear-the-spear-2-dev.cloudfunctions.net/spotifyTemporaryCredentialsReceiver'
 };
