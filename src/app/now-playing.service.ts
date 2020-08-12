@@ -10,7 +10,8 @@ import * as firebase from 'firebase';
 export class NowPlayingService implements OnDestroy {
   private timerSubscription: Subscription;
   public currentlyPlayingSongs: firebase.firestore.Query<DocumentData>;
-  private refreshTimer = timer(0, 1000 * 20);
+  // Refresh data every 10 seconds.
+  private refreshTimer = timer(0, 1000 * 10);
   constructor(
     private fireFunctions: AngularFireFunctions,
     private firestore: AngularFirestore,
@@ -25,7 +26,6 @@ export class NowPlayingService implements OnDestroy {
     // Tells the backend that there is a user watching the now playing screen and that the backend should keep the data
     // up to date.
     const keepDataFetcherAlive = this.fireFunctions.httpsCallable('triggerNowPlayingDataFetch');
-    // Refresh data every 10 seconds.
     this.timerSubscription = this.refreshTimer.subscribe(async () => {
         console.log('Sending Now Playing keep alive signal...');
         try {
