@@ -40,7 +40,7 @@
     <!-- Most of our branding is in the sidenav. -->
     <!-- If the sidenav might be collapsed, show some branding near the top of the screen. -->
     <div *ngIf="this.shouldUseCollapsibleSidenav">
-      <mat-toolbar color="accent" style="position: fixed; z-index: 1">
+      <mat-toolbar class="mat-elevation-z4" color="accent" style="position: fixed; z-index: 1">
         <button class="open-sidenav-button" mat-icon-button (click)="sidenav.open()">
           <mat-icon color="primary">menu</mat-icon>
         </button>
