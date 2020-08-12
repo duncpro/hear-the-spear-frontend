@@ -1,7 +1,7 @@
 <div *ngIf="donePopulatingList">
   <div *ngIf="tracks.length > 0">
     <div *ngIf="!useSuperWideList" style="padding-top: 10px;">
-      What we're listening to right now.
+      Songs being played on campus right now.
       <span style="cursor: pointer;" (click)="showAboutPage()"><b><u>Learn more</u></b></span>
     </div>
     <mat-list class="{{ this.useSuperWideList ? 'wide-list' : '' }}">
