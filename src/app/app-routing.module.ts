@@ -26,7 +26,7 @@ const routes: Routes = [
   // This is the most impressive screen of the site in my opinion.
   {
     path: '**',
-    redirectTo: 'top-artists',
+    redirectTo: 'top-songs',
     pathMatch: 'full'
   }
 ];
