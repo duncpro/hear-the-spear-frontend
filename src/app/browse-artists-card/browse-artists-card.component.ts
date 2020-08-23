@@ -14,8 +14,4 @@ export class BrowseArtistsCardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  async navigateToArtists(): Promise<void> {
-    await this.router.navigateByUrl('/top-artists');
-    await window.scrollTo(0, 0);
-  }
 }
