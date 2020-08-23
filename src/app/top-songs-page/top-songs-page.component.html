@@ -1,7 +1,23 @@
 <div *ngIf="donePopulatingList">
-  <div *ngIf="!useSuperWideList" style="padding-top: 10px;">
-    Over the past few days, FSU students have been listening to these songs the most.
-    <span style="cursor: pointer;" (click)="showAboutPage()"><b><u>Learn more</u></b></span>
+  <div *ngIf="!useSuperWideList" style="margin-top: 10px;">
+    <mat-card>
+      <mat-card-header>
+        <mat-icon mat-card-avatar style="font-size: 40px;">music_note</mat-icon>
+        <mat-card-title>
+          Top Tracks
+        </mat-card-title>
+        <mat-card-subtitle>
+          From the last few days
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        These are the top 50 most played tracks at Florida State University.
+        <br>
+        <br>
+        Click a song to preview.
+      </mat-card-content>
+    </mat-card>
   </div>
   <mat-list class="{{ this.useSuperWideList ? 'wide-list' : '' }}">
     <div *ngFor="let track of topTracks; index as i">

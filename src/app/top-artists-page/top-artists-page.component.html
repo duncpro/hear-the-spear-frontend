@@ -1,7 +1,23 @@
 <div *ngIf="donePopulatingList">
-  <div *ngIf="!useSuperWideList" style="padding-top: 10px;">
-    Over the past few days, these have been the most popular artists at Florida State University.
-    <span style="cursor: pointer;" (click)="showAboutPage()"><b><u>Learn more</u></b></span>
+  <div *ngIf="!useSuperWideList" style="margin-top: 10px;">
+    <mat-card>
+      <mat-card-header>
+        <mat-icon mat-card-avatar style="font-size: 40px;">person</mat-icon>
+        <mat-card-title>
+          Popular Artists
+        </mat-card-title>
+        <mat-card-subtitle>
+          From the last few days
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        These are the most popular artists at Florida State right now.
+        <span style="cursor: pointer;" (click)="showAboutPage()"><b><u>Learn more</u></b></span>
+      </mat-card-content>
+    </mat-card>
+
+
   </div>
   <mat-list class="{{ this.useSuperWideList ? 'wide-list' : '' }}">
     <div *ngFor="let artist of topArtists; index as i">
