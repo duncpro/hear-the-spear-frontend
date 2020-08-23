@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { ScreenSizeService } from '../screen-size.service';
 import { Subscription } from 'rxjs';
 import { Track } from '../track';

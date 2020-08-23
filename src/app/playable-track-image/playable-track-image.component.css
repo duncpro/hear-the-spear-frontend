@@ -1,0 +1,46 @@
+body {
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+}
+
+.preview-container {
+  display: inline-block;
+  position: relative;
+}
+
+.album-art {
+  max-width: 100%;
+  position: absolute;
+  max-height: 100%;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  clip-path: circle(50% at 50% 49%);
+}
+
+audio {
+  display: none;
+}
+
+.button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.opaque {
+  opacity: 0.5;
+}
+
+.show-on-hover {
+  visibility: hidden;
+}
+
+.preview-container:hover .show-on-hover {
+  visibility: visible;
+}
+
+.preview-container:hover .dim-on-hover {
+  opacity: 0.5;
+}

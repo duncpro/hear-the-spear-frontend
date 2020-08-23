@@ -1,0 +1,10 @@
+<audio #audioElement [src]="previewUrl"></audio>
+<div class="preview-container" (click)="togglePreview()">
+  <mat-spinner strokeWidth="2" diameter="44" mode="determinate" [value]="playbackProgress" style="z-index: 1"></mat-spinner>
+  <div>
+    <img class="album-art" [src]="albumArt" [ngClass]="getAlbumArtClasses()" >
+    <mat-icon class="button" *ngIf="isPlaying">pause</mat-icon>
+    <mat-icon class="button show-on-hover" *ngIf="!isPlaying && previewUrl">play_arrow</mat-icon>
+  </div>
+
+</div>
