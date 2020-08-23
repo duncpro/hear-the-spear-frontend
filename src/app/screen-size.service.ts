@@ -16,7 +16,6 @@ export class ScreenSizeService {
     );
   }
   isScreenSmall(): boolean {
-    console.log(this.maxMobileScreenWidth);
     return window.innerWidth < this.maxMobileScreenWidth;
   }
 }

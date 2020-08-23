@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { MatSidenav } from '@angular/material/sidenav';
+import { MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { ScreenSizeService } from './screen-size.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
@@ -45,6 +45,7 @@ export class AppComponent implements OnDestroy, OnInit {
   showNowPlayingNavItem = false;
   private cancelNowPlayingSubscription: () => void;
   @ViewChild('sidenav') sidenav: MatSidenav;
+  @ViewChild('matSidenavContent') matSidenavContent: MatSidenavContent;
   constructor(
     private router: Router,
     private screenSizeService: ScreenSizeService,
@@ -60,13 +61,13 @@ export class AppComponent implements OnDestroy, OnInit {
   onRouterEvent(event: RouterEvent): void {
     if (event instanceof NavigationEnd) {
       this.currentRoute = event.urlAfterRedirects.split('/')[1];
-      console.log(this.currentRoute);
       if (this.shouldUseCollapsibleSidenav) {
         // Collapse the sidenav after the user picks a page.
         // This eliminates the need for a secondary click to close the sidenav.
         // noinspection JSIgnoredPromiseFromCall
         this.sidenav.close();
       }
+      this.matSidenavContent.getElementRef().nativeElement.scrollTop = 0;
     }
   }
   ngOnDestroy(): void {

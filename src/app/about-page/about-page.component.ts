@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InputEmailAddressDialogComponent } from '../input-email-address-dialog/input-email-address-dialog.component';
 
@@ -18,5 +18,4 @@ export class AboutPageComponent implements OnInit {
   openSignUpDialog(): void {
     this.dialog.open(InputEmailAddressDialogComponent);
   }
-
 }
