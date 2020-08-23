@@ -33,6 +33,7 @@ import { NowPlayingPageComponent } from './now-playing-page/now-playing-page.com
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { LottiePlayer } from 'ngx-lottie/src/symbols';
+import { BookmarkCardComponent } from './bookmark-card/bookmark-card.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { LottiePlayer } from 'ngx-lottie/src/symbols';
     ThankYouForContributingDialogComponent,
     EmailReEntryDialogComponent,
     NowPlayingPageComponent,
+    BookmarkCardComponent,
   ],
   imports: [
     BrowserModule,
