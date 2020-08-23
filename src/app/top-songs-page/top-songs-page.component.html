@@ -8,10 +8,10 @@
       <app-song-list-item [track]="track" rank="{{ i + 1 }}">
       </app-song-list-item>
     </div>
-    <br>
-    <app-browse-artists-card></app-browse-artists-card>
-    <br>
-<!--    <app-list-footer></app-list-footer>-->
+    <div *ngIf="screenSizeService.isScreenSmall()">
+      <app-browse-artists-card></app-browse-artists-card>
+    </div>
+    <app-list-footer></app-list-footer>
   </mat-list>
 </div>
 

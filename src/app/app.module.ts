@@ -23,7 +23,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EmailSentSuccessfullyDialogComponent } from './email-sent-successfully-dialog/email-sent-successfully-dialog.component';
 import { ArtistListItemComponent } from './artist-list-item/artist-list-item.component';
 import { ShareCardComponent } from './share-card/share-card.component';
-import { ListFooterComponent } from './list-footer/list-footer.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { ThankYouForContributingDialogComponent } from './thank-you-for-contributing-dialog/thank-you-for-contributing-dialog.component';
@@ -35,6 +34,7 @@ import player from 'lottie-web';
 import { LottiePlayer } from 'ngx-lottie/src/symbols';
 import { BookmarkCardComponent } from './bookmark-card/bookmark-card.component';
 import { BrowseArtistsCardComponent } from './browse-artists-card/browse-artists-card.component';
+import { ListFooterComponent } from './list-footer/list-footer.component';
 
 @NgModule({
   declarations: [
@@ -48,12 +48,12 @@ import { BrowseArtistsCardComponent } from './browse-artists-card/browse-artists
     EmailSentSuccessfullyDialogComponent,
     ArtistListItemComponent,
     ShareCardComponent,
-    ListFooterComponent,
     ThankYouForContributingDialogComponent,
     EmailReEntryDialogComponent,
     NowPlayingPageComponent,
     BookmarkCardComponent,
     BrowseArtistsCardComponent,
+    ListFooterComponent,
   ],
   imports: [
     BrowserModule,

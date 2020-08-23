@@ -13,5 +13,7 @@ export class ParticipateCardComponent {
   promptForEmailAddress(): void {
     this.dialog.open(InputEmailAddressDialogComponent);
   }
-
+  hasUserLinkedTheirAccount(): boolean {
+    return window.localStorage.getItem('hasLinkedSpotifyAccount') === 'yes';
+  }
 }

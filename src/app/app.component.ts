@@ -87,6 +87,8 @@ export class AppComponent implements OnDestroy, OnInit {
             showContributionSuccessMessage: null
           }
         });
+        // Hide all the "Link Account" messages.
+        window.localStorage.setItem('hasLinkedSpotifyAccount', 'yes');
       }
     });
     // Only show the "Now Playing" navigation item if at least one person is
@@ -124,7 +126,7 @@ export class AppComponent implements OnDestroy, OnInit {
       return;
     }
     // The email address that we just sent a verification message to.
-    let email = window.localStorage.getItem('hearTheSpearEmailForSignIn');
+    let email = window.localStorage.getItem('emailForSignIn');
     // If we did not just send a verification email from this device, the user must have switched devices.
     // In this case we need to prompt for the email address again because Firebase requires it for sign-in.
     if (!email) {
@@ -134,7 +136,7 @@ export class AppComponent implements OnDestroy, OnInit {
     const { user } = await this.fireAuth.signInWithEmailLink(email, window.location.href);
     // The user has been successfully signed in.
     // Clear the email address that we saved earlier.
-    window.localStorage.removeItem('hearTheSpearEmailForSignIn');
+    window.localStorage.removeItem('emailForSignIn');
     await this.startSpotifyAuthProcedure(user.uid);
   }
   /**
