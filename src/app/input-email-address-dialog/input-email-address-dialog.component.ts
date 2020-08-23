@@ -23,7 +23,7 @@ export class InputEmailAddressDialogComponent implements OnInit {
       emailAddress: ['', [
         Validators.email,
         Validators.required,
-        emailDomainValidator(['my.fsu.edu', 'fsu.edu'])
+        emailDomainValidator(['my.fsu.edu', 'fsu.edu', 'magnet.fsu.edu'])
       ]]
     });
   }
