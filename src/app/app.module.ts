@@ -34,6 +34,7 @@ import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { LottiePlayer } from 'ngx-lottie/src/symbols';
 import { BookmarkCardComponent } from './bookmark-card/bookmark-card.component';
+import { BrowseArtistsCardComponent } from './browse-artists-card/browse-artists-card.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { BookmarkCardComponent } from './bookmark-card/bookmark-card.component';
     EmailReEntryDialogComponent,
     NowPlayingPageComponent,
     BookmarkCardComponent,
+    BrowseArtistsCardComponent,
   ],
   imports: [
     BrowserModule,
