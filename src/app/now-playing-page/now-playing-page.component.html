@@ -1,8 +1,21 @@
 <div *ngIf="donePopulatingList">
   <div *ngIf="tracks.length > 0">
-    <div *ngIf="!useSuperWideList" style="padding-top: 10px;">
-      Songs being played on campus right now.
-      <span style="cursor: pointer;" (click)="showAboutPage()"><b><u>Learn more</u></b></span>
+    <div *ngIf="!useSuperWideList">
+      <mat-card>
+        <mat-card-header>
+          <mat-icon mat-card-avatar style="font-size: 40px;">radio</mat-icon>
+          <mat-card-title>
+            Now Playing
+          </mat-card-title>
+          <mat-card-subtitle>
+            Songs we're listening to <u>right now</u>.
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          Click a song to preview.
+        </mat-card-content>
+      </mat-card>
     </div>
     <mat-list class="{{ this.useSuperWideList ? 'wide-list' : '' }}">
       <div *ngFor="let track of tracks; index as i">
@@ -24,7 +37,6 @@
           and put on some music!
         </p>
       </div>
-
     </div>
   </div>
 </div>
