@@ -1,6 +1,6 @@
 <div *ngIf="donePopulatingList">
   <div *ngIf="tracks.length > 0">
-    <div *ngIf="!useSuperWideList">
+    <div *ngIf="!useSuperWideList" style="margin-top: 10px;">
       <mat-card>
         <mat-card-header>
           <mat-icon mat-card-avatar style="font-size: 40px;">radio</mat-icon>
@@ -22,7 +22,9 @@
         <app-song-list-item [track]="track" [showCount]="true" [showAnimation]="true">
         </app-song-list-item>
       </div>
-      <app-list-footer></app-list-footer>
+      <!-- If there are less than five tracks showing, don't show share, bookmark, and participate cards -->
+      <!-- It just makes the UI look cluttered -->
+      <app-list-footer *ngIf="tracks.length > 5"></app-list-footer>
     </mat-list>
   </div>
 
