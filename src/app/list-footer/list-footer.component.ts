@@ -13,10 +13,11 @@ export class ListFooterComponent implements OnInit, OnDestroy {
   constructor(
     public screenSizeService: ScreenSizeService
   ) {
-    this.constrainWidth = !screenSizeService.isScreenSmall();
+
   }
 
   ngOnInit(): void {
+    this.constrainWidth = !this.screenSizeService.isScreenSmall();
     this.screenSizeSubscription = this.screenSizeService.shouldUseMobileUI
       .subscribe((val) => {
         this.constrainWidth = !val;
