@@ -1,15 +1,8 @@
-<h1 mat-dialog-title>Link Your Spotify</h1>
+<h1 mat-dialog-title>Confirm FSU Enrollment</h1>
 <form [formGroup]="form" (submit)="sendEmail()">
   <div mat-dialog-content>
-
-    This list is populated automatically based on the listening habits of Florida State students.
-
-    <p>
-      We need to make sure you're an FSU student.
-      To verify your identity we will send a link to your student email.
-    </p>
-
-
+    These rankings are exclusive to FSU students. Enter your <u>student email address</u> to continue.
+    <br>
     <mat-form-field appearance="standard">
       <mat-label>Student Email Address</mat-label>
       <input matInput placeholder="abc123@my.fsu.edu" formControlName="emailAddress">
@@ -18,8 +11,9 @@
       </mat-error>
     </mat-form-field>
   </div>
-  <div mat-dialog-actions>
-    <button mat-button type="submit">
+  <div mat-dialog-actions align="end">
+    <button mat-button (click)="dialogRef.close()">Cancel</button>
+    <button mat-raised-button type="submit" color="primary">
       Send Verification Email
     </button>
   </div>
