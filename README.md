@@ -34,3 +34,5 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 - If the amount of users grows to the point that "Now Playing" is unfeasible... We could select a random subset of the population
 to query instead of requesting current listening status of everyone. We could limit the query to a random group of 30 people? 
 We would also need to increase the refresh interval, that way the list isn't constantly changing.
+- Top Song and artists streaks. Indicate how long the top song and top artist have held the #1 spot.  
+- Add a banner to recruit a marketing major to help grow the site.
