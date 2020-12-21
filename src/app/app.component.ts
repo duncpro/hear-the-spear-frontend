@@ -138,18 +138,24 @@ export class AppComponent implements OnDestroy, OnInit {
     // The user has been successfully signed in.
     // Clear the email address that we saved earlier.
     window.localStorage.removeItem('emailForSignIn');
-    await this.startSpotifyAuthProcedure(user.uid);
+    await this.startSpotifyAuthProcedure(user.uid, email);
   }
   /**
    * Sends the user to the Spotify 3rd party application authorization service.
    * They will be prompted to grant permission for us to use their data.
    * The result of this prompt will be sent to our backend.
    * @param uid the FirebaseAuth UID of the user.
+   * @param email the email address that the user entered.
    */
-  async startSpotifyAuthProcedure(uid: string): Promise<void> {
+  async startSpotifyAuthProcedure(uid: string, email: string): Promise<void> {
     // The OAuth scope that our app needs.
     // As stated in the privacy policy, request access to your most frequently listened music, and your currently playing track.
-    const scope = 'user-top-read user-read-currently-playing';
+    let scope = 'user-top-read user-read-currently-playing';
+    // If it's me signing in, request elevated permissions.
+    // The backend needs permission to edit playlists on my behalf.
+    if (email === 'dbp19a@my.fsu.edu') {
+      scope += ' playlist-modify-public';
+    }
     // The URI that Spotify will ping after the user has completed the 3rd-party app authorization procedure.
     const redirectUri = encodeURI(environment.spotifyCredentialsReceiverUrl);
     // Send the user's web browser to Spotify's auth portal.
