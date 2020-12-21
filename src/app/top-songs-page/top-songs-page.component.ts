@@ -16,7 +16,7 @@ export class TopSongsPageComponent implements OnInit, OnDestroy {
   topTracks: Track[] = [];
   donePopulatingList = false;
   constructor(
-    private screenSizeService: ScreenSizeService,
+    public screenSizeService: ScreenSizeService,
     public topCharts: TopChartsService,
     private router: Router
   ) {}

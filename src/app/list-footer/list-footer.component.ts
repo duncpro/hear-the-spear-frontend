@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class ListFooterComponent implements OnInit, OnDestroy {
   private screenSizeSubscription: Subscription;
-  public constrainWidth: boolean;
+  public isLargeScreen: boolean;
   constructor(
     public screenSizeService: ScreenSizeService
   ) {
@@ -17,10 +17,10 @@ export class ListFooterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.constrainWidth = !this.screenSizeService.isScreenSmall();
+    this.isLargeScreen = !this.screenSizeService.isScreenSmall();
     this.screenSizeSubscription = this.screenSizeService.shouldUseMobileUI
       .subscribe((val) => {
-        this.constrainWidth = !val;
+        this.isLargeScreen = !val;
     });
   }
 

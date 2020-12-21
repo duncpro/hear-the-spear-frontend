@@ -21,6 +21,7 @@ export class AboutPageComponent implements OnInit {
     private screenSizeService: ScreenSizeService,
     private dialog: MatDialog
   ) {
+    this.isLargeScreen = !this.screenSizeService.isScreenSmall();
     this.screenSizeSubscription = this.screenSizeService.shouldUseMobileUI
       .subscribe(val => this.isLargeScreen = !val);
   }

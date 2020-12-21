@@ -17,6 +17,7 @@ export class PrivacyComponent implements OnInit {
   constructor(
     private screenSizeService: ScreenSizeService,
   ) {
+    this.isLargeScreen = !this.screenSizeService.isScreenSmall();
     this.screenSizeSubscription = this.screenSizeService.shouldUseMobileUI
       .subscribe(val => this.isLargeScreen = !val);
   }

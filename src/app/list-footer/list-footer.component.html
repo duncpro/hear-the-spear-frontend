@@ -1,6 +1,8 @@
-<div [ngClass]="this.constrainWidth ? 'constrained' : 'fill'">
-  <app-participate-card></app-participate-card>
+<div [ngClass]="this.isLargeScreen ? 'constrained' : 'fill'">
+  <!-- No need to show participate card on large screens because the participate button is already visible -->
+  <div *ngIf="!this.isLargeScreen">
+    <app-participate-card></app-participate-card>
+  </div>
   <app-share-card></app-share-card>
-  <app-bookmark-card></app-bookmark-card>
   <br>
 </div>
