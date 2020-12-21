@@ -49,7 +49,7 @@ export class InputEmailAddressDialogComponent implements OnInit {
     }
   }
   saveEmailAddress(emailAddress: string): void {
-    window.localStorage.setItem('hearTheSpearEmailForSignIn', emailAddress);
+    window.localStorage.setItem('emailForSignIn', emailAddress);
   }
   showSuccessDialog(): void {
     const dialogRef = this.dialog.open(EmailSentSuccessfullyDialogComponent);
