@@ -36,6 +36,7 @@ import { BookmarkCardComponent } from './bookmark-card/bookmark-card.component';
 import { BrowseArtistsCardComponent } from './browse-artists-card/browse-artists-card.component';
 import { ListFooterComponent } from './list-footer/list-footer.component';
 import { PlayableTrackImageComponent } from './playable-track-image/playable-track-image.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { PlayableTrackImageComponent } from './playable-track-image/playable-tra
     BrowseArtistsCardComponent,
     ListFooterComponent,
     PlayableTrackImageComponent,
+    PrivacyComponent,
   ],
   imports: [
     BrowserModule,

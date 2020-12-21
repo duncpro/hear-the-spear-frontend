@@ -1,3 +1,8 @@
+.big-side-margins {
+  margin: auto;
+  width: 80%;
+}
+
 a {
   font-weight: bold;
   text-decoration: underline;

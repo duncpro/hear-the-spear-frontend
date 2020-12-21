@@ -1,37 +1,45 @@
-<div>
-  <h1>How it works</h1>
-  <p>
-    HearTheSpear is a project I developed during the break between summer and fall classes this year.
-    The goal is to make a list of our school's favorite songs and artists.
-  </p>
-  <p>
-    HearTheSpear uses the Spotify API to track the most popular music at Florida State University.
-    Are you an FSU student? Link your account to participate.
-  </p>
-  <button mat-raised-button (click)="openSignUpDialog()">Link Spotify Account</button>
-  <h1>Privacy</h1>
-  <p>
-    To protect your privacy, HearTheSpear only collects data on your most frequently listened music.
-    HearTheSpear can not read or make changes to your playlists, library, or preferences.
-    You can always disconnect your Spotify account from HearTheSpear by visiting Spotify's
-    <a href="https://support.spotify.com/us/using_spotify/features/revoke-access-from-3rd-party-app/">official website</a>.
-  </p>
-  <h1>Open Source</h1>
-  <p>
-    You can contribute to HearTheSpear's development by making a pull request
-    at <a href="https://github.com/duncpro">github.com/duncpro</a>.
-  </p>
+<div  [ngClass]="{'big-side-margins' : isLargeScreen }">
+  <h1>
+    Participate
+  </h1>
+  All FSU students are eligible to participate in HearTheSpear!
+  Help make our school’s music chart more accurate by connecting your Spotify account.
+  <h3>
+    How it works
+  </h3>
   <mat-card>
     <mat-card-header>
-      <img mat-card-avatar src="./../../assets/profile-shot.jpeg">
-      <span mat-card-title>Duncan Proctor</span>
-      <span mat-card-subtitle>Student</span>
+      <mat-icon mat-card-avatar style="font-size: 30px;">
+        looks_one
+      </mat-icon>
+      <mat-card-title>
+        Confirm Enrollment
+      </mat-card-title>
     </mat-card-header>
-
     <mat-card-content>
-      I'm a 22 year old working on my Bachelors degree at Florida State. If you'd
-      like to develop something together, or even just hangout... hit me up! You can reach me at
-      <a href="mailto:dbp19a@my.fsu.edu">dbp19a@my.fsu.edu</a>.
+      Confirm your enrollment at FSU using your student email address. We'll send a link to your inbox.
     </mat-card-content>
   </mat-card>
+  <br>
+  <mat-card>
+    <mat-card-header>
+      <mat-icon mat-card-avatar style="font-size: 30px;">
+        looks_two
+      </mat-icon>
+      <mat-card-title>
+        Login with Spotify
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      Your music taste will be automatically factored in to the school rankings!
+    </mat-card-content>
+  </mat-card>
+
+  <br>
+
+
+  <div style="text-align: center;">
+    <button mat-raised-button color="primary" (click)="openSignUpDialog()">Get Started</button>
+  </div>
+
 </div>

@@ -4,6 +4,7 @@ import { TopArtistsPageComponent } from './top-artists-page/top-artists-page.com
 import { TopSongsPageComponent } from './top-songs-page/top-songs-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { NowPlayingPageComponent } from './now-playing-page/now-playing-page.component';
+import {PrivacyComponent} from './privacy/privacy.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutPageComponent
+  },
+  {
+    path: 'privacy',
+    component: PrivacyComponent
   },
   // Redirect all unknown paths to the top-artist screen.
   // This is the most impressive screen of the site in my opinion.

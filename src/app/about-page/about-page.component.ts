@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InputEmailAddressDialogComponent } from '../input-email-address-dialog/input-email-address-dialog.component';
+import {Subscription} from 'rxjs';
+import {ScreenSizeService} from '../screen-size.service';
 
 @Component({
   selector: 'app-about-page',
@@ -9,9 +11,19 @@ import { InputEmailAddressDialogComponent } from '../input-email-address-dialog/
 })
 export class AboutPageComponent implements OnInit {
 
+  /**
+   * Hold on to the subscription to the ScreenSizeService. It must be closed later to
+   * prevent memory leaks.
+   */
+  screenSizeSubscription: Subscription;
+  isLargeScreen: boolean;
   constructor(
+    private screenSizeService: ScreenSizeService,
     private dialog: MatDialog
-  ) { }
+  ) {
+    this.screenSizeSubscription = this.screenSizeService.shouldUseMobileUI
+      .subscribe(val => this.isLargeScreen = !val);
+  }
 
   ngOnInit(): void {
   }
