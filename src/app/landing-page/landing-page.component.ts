@@ -13,7 +13,8 @@ import {Artist} from '../artist';
 export class LandingPageComponent implements OnInit, OnDestroy {
   subscriptions: Array<Subscription> = [];
   width = new BehaviorSubject(window.innerWidth);
-  height = new BehaviorSubject(window.innerHeight);
+  compositeHeight = new BehaviorSubject(window.innerHeight);
+  height: number = window.innerHeight;
   preferredImageSize = new BehaviorSubject(100);
   images: Array<ImageBitmap> = [];
   @ViewChild('composite') composite: ScrollingCompositeComponent;
@@ -29,7 +30,8 @@ export class LandingPageComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       dimensionsChanged.subscribe(() => {
         this.width.next(window.innerWidth);
-        this.height.next(window.innerHeight);
+        this.compositeHeight.next(window.innerHeight);
+        this.height = window.innerHeight;
       })
     );
     this.fetchImages().catch(console.error);
