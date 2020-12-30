@@ -37,6 +37,8 @@ import { BrowseArtistsCardComponent } from './browse-artists-card/browse-artists
 import { ListFooterComponent } from './list-footer/list-footer.component';
 import { PlayableTrackImageComponent } from './playable-track-image/playable-track-image.component';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ScrollingCompositeModule } from 'scrolling-composite';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
     ListFooterComponent,
     PlayableTrackImageComponent,
     PrivacyComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
     AngularFireModule.initializeApp(environment.firebase),
     MatProgressSpinnerModule,
     LottieModule.forRoot({ player: playerFactory }),
+    ScrollingCompositeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

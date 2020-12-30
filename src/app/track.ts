@@ -5,5 +5,6 @@ export interface Track {
   album: string;
   preview: string;
   art: string;
+  artMedium: string;
   link: string;
 }

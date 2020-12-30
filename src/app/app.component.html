@@ -1,70 +1,76 @@
-<mat-sidenav-container class="fullscreen">
-  <mat-sidenav #sidenav
-               class="sidenav mat-elevation-z24"
-               mode="{{ this.shouldUseCollapsibleSidenav ? 'over' : 'side' }}"
-               opened="{{ !this.shouldUseCollapsibleSidenav }}">
+<!-- We don't want to show the sidenav or app bar on the landing page -->
+<div *ngIf="currentRoute === 'landing-page'">
+  <router-outlet></router-outlet>
+</div>
 
-    <img class="center-logo" src="./../assets/logo.png">
-    <div class="app-title primary-color">Hear The Spear</div>
-    <div class="primary-color" style="text-align: center;">Trending Music at FSU</div>
-    <br>
-    <a routerLink="top-songs">
-      <button
-        mat-button
-        color="{{ this.currentRoute.startsWith('top-songs') ? 'primary' : '' }}"
-      >FSU Top 50</button>
-    </a>
-    <a routerLink="top-artists">
-      <button
-        mat-button
-        color="{{ this.currentRoute.startsWith('top-artists') ? 'primary' : '' }}"
-      >Popular Artists</button>
-    </a>
-    <a [routerLink]="showNowPlayingNavItem ? 'now-playing' : currentRoute">
-      <button
-        mat-button
-        color="{{ this.currentRoute.startsWith('now-playing') ? 'primary' : '' }}"
-        [disabled]="!showNowPlayingNavItem"
-      >Now Playing</button>
-    </a>
-    <a routerLink="about">
-      <button
-        mat-button
-        color="{{ this.currentRoute.startsWith('about') ? 'primary' : '' }}"
-      >
-        Participate
-      </button>
-    </a>
-    <div style="text-align: center; bottom:10px; position: absolute; width: 100%">
-      <a routerLink="privacy">
-        Privacy
+<div *ngIf="currentRoute !== 'landing-page'">
+  <mat-sidenav-container class="fullscreen">
+    <mat-sidenav #sidenav
+                 class="sidenav mat-elevation-z24"
+                 mode="{{ this.shouldUseCollapsibleSidenav ? 'over' : 'side' }}"
+                 opened="{{ !this.shouldUseCollapsibleSidenav }}">
+
+      <img class="center-logo" src="./../assets/logo.png">
+      <div class="app-title primary-color">Hear The Spear</div>
+      <div class="primary-color" style="text-align: center;">Trending Music at FSU</div>
+      <br>
+      <a routerLink="top-songs">
+        <button
+          mat-button
+          color="{{ this.currentRoute.startsWith('top-songs') ? 'primary' : '' }}"
+        >FSU Top 50</button>
       </a>
-      |
-      <a href="mailto:dbp19a@my.fsu.edu">Contact</a>
-      |
-      <a href="https://github.com/duncpro">Source</a>
-    </div>
-  </mat-sidenav>
-  <mat-sidenav-content #matSidenavContent>
-    <!-- Most of our branding is in the sidenav. -->
-    <!-- If the sidenav might be collapsed, show some branding near the top of the screen. -->
-    <div *ngIf="this.shouldUseCollapsibleSidenav">
-      <mat-toolbar class="mat-elevation-z4" color="accent" style="position: fixed; z-index: 2">
-        <button class="open-sidenav-button" mat-icon-button (click)="sidenav.open()">
-          <mat-icon color="primary">menu</mat-icon>
+      <a routerLink="top-artists">
+        <button
+          mat-button
+          color="{{ this.currentRoute.startsWith('top-artists') ? 'primary' : '' }}"
+        >Popular Artists</button>
+      </a>
+      <a [routerLink]="showNowPlayingNavItem ? 'now-playing' : currentRoute">
+        <button
+          mat-button
+          color="{{ this.currentRoute.startsWith('now-playing') ? 'primary' : '' }}"
+          [disabled]="!showNowPlayingNavItem"
+        >Now Playing</button>
+      </a>
+      <a routerLink="about">
+        <button
+          mat-button
+          color="{{ this.currentRoute.startsWith('about') ? 'primary' : '' }}"
+        >
+          Participate
         </button>
-        <span class="primary-color app-title">Hear The Spear</span>
-      </mat-toolbar>
-    </div>
+      </a>
+      <div style="text-align: center; bottom:10px; position: absolute; width: 100%">
+        <a routerLink="privacy">
+          Privacy
+        </a>
+        |
+        <a href="mailto:dbp19a@my.fsu.edu">Contact</a>
+        |
+        <a href="https://github.com/duncpro">Source</a>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content #matSidenavContent>
+      <!-- Most of our branding is in the sidenav. -->
+      <!-- If the sidenav might be collapsed, show some branding near the top of the screen. -->
+      <div *ngIf="this.shouldUseCollapsibleSidenav">
+        <mat-toolbar class="mat-elevation-z4" color="accent" style="position: fixed; z-index: 2">
+          <button class="open-sidenav-button" mat-icon-button (click)="sidenav.open()">
+            <mat-icon color="primary">menu</mat-icon>
+          </button>
+          <span class="primary-color app-title">Hear The Spear</span>
+        </mat-toolbar>
+      </div>
 
-    <!-- The top toolbar is "fixed". This spacer prevents the top part of the -->
-    <!-- router outlet from being hidden it. -->
-    <div *ngIf="shouldUseCollapsibleSidenav" style="margin-top: 65px;"></div>
-    <div style="margin-left: 10px; margin-right: 10px;">
-      <router-outlet></router-outlet>
-    </div>
+      <!-- The top toolbar is "fixed". This spacer prevents the top part of the -->
+      <!-- router outlet from being hidden it. -->
+      <div *ngIf="shouldUseCollapsibleSidenav" style="margin-top: 65px;"></div>
+      <div style="margin-left: 10px; margin-right: 10px;">
+        <router-outlet></router-outlet>
+      </div>
 
 
-  </mat-sidenav-content>
-</mat-sidenav-container>
-
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

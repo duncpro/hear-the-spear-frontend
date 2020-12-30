@@ -1,0 +1,32 @@
+<lib-scrolling-composite #composite
+  [compositeHeight]="this.height"
+  [compositeWidth]="this.width"
+  [images]="this.images"
+  [preferredImageSize]="this.preferredImageSize"
+  backgroundColor="#CEB888"
+  [startAutomatically]="false"
+  style="position: absolute;"
+></lib-scrolling-composite>
+<div style="position: relative; height: 100vh; display: flex; align-items: center;">
+  <mat-card style="margin: 0 auto; text-align: center; max-width: 300px;" class="mat-elevation-z4">
+    <img src="assets/logo.png" alt="logo" style="width: 175px;" class="center-logo">
+    <div class="app-title primary-color">Hear The Spear</div>
+    <div class="primary-color" style="text-align: center;">Trending Music at FSU</div>
+    <p>
+      HearTheSpear uses Spotify to rank the most popular songs and artists at Florida State University.
+    </p>
+    <button mat-raised-button color="primary" class="mat-elevation-z0" routerLink="/top-songs">
+      Explore Music
+    </button>
+
+    <p>
+    <mat-divider></mat-divider>
+    <p style="font-size: 12px;">
+    <br>
+      Developed by Duncan Proctor
+      <br>
+      Class of 2021
+    </p>
+
+  </mat-card>
+</div>

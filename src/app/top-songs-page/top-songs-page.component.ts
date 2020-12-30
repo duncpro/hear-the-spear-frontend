@@ -28,7 +28,8 @@ export class TopSongsPageComponent implements OnInit, OnDestroy {
     this.populateList();
   }
   async populateList(): Promise<void> {
-    this.topTracks = await this.topCharts.topTracks;
+    this.topTracks = (await this.topCharts.topTracks)
+      .filter(it => it.count > 1); // Only show tracks that more than one person likes
     this.donePopulatingList = true;
   }
   ngOnDestroy(): void {

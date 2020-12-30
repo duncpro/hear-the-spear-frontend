@@ -61,13 +61,16 @@ export class AppComponent implements OnDestroy, OnInit {
   onRouterEvent(event: RouterEvent): void {
     if (event instanceof NavigationEnd) {
       this.currentRoute = event.urlAfterRedirects.split('/')[1];
-      if (this.shouldUseCollapsibleSidenav) {
-        // Collapse the sidenav after the user picks a page.
-        // This eliminates the need for a secondary click to close the sidenav.
-        // noinspection JSIgnoredPromiseFromCall
-        this.sidenav.close();
+      // If the user is on the landing page the sidenav will not have been initialized yet.
+      if (this.sidenav) {
+        if (this.shouldUseCollapsibleSidenav) {
+          // Collapse the sidenav after the user picks a page.
+          // This eliminates the need for a secondary click to close the sidenav.
+          // noinspection JSIgnoredPromiseFromCall
+          this.sidenav.close();
+        }
+        this.matSidenavContent.getElementRef().nativeElement.scrollTop = 0;
       }
-      this.matSidenavContent.getElementRef().nativeElement.scrollTop = 0;
     }
   }
   ngOnDestroy(): void {

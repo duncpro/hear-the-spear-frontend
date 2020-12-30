@@ -7,3 +7,27 @@ a {
 
   color: inherit;
 }
+
+.app-title {
+  /* Expand the element to fill all available space */
+  width: 100%;
+
+  /* Now center the text inside of the expanded element */
+  text-align: center;
+
+  /* Use the seminole-y font in the app's title bar */
+  font-family: 'noles', serif;
+
+  /* Make the title big for good branding */
+  font-size: xx-large;
+}
+
+/* Center the logo in the sidenav */
+.center-logo {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+
+  /* TODO: Resize the actual image file */
+  width: 60%;
+}
