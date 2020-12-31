@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-email-re-entry-dialog',
@@ -18,6 +18,7 @@ export class EmailReEntryDialogComponent implements OnInit {
       emailAddress: ['', [
         Validators.email,
         Validators.required,
+        emailDomainValidator
       ]]
     });
   }
@@ -27,4 +28,12 @@ export class EmailReEntryDialogComponent implements OnInit {
       this.dialogRef.close(emailAddress);
     }
   }
+}
+
+function emailDomainValidator(validDomains: string[]): ValidatorFn {
+  return (control: AbstractControl): {[key: string]: any} | null => {
+    const domain: string = control.value.split('@')[1];
+    const forbidden = !validDomains.includes(domain ? domain.toLowerCase() : domain);
+    return forbidden ? { forbiddenEmailAddress: { value: control.value } } : null;
+  };
 }
