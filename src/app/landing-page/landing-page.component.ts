@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {createImageBitmapUniversal, ScrollingCompositeComponent} from 'scrolling-composite';
-import {BehaviorSubject, fromEvent, merge, Subscription} from 'rxjs';
+import {BehaviorSubject, from, fromEvent, merge, Subscription, timer} from 'rxjs';
 import {TopChartsService} from '../top-charts.service';
 import {Track} from '../track';
 import {Artist} from '../artist';
@@ -17,6 +17,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   height: number = window.innerHeight;
   preferredImageSize = new BehaviorSubject(100);
   images: Array<ImageBitmap> = [];
+  doneFetchingImages: boolean = false;
   @ViewChild('composite') composite: ScrollingCompositeComponent;
   constructor(
     private topChartsService: TopChartsService
@@ -34,7 +35,19 @@ export class LandingPageComponent implements OnInit, OnDestroy {
         this.height = window.innerHeight;
       })
     );
-    this.fetchImages().catch(console.error);
+
+    // Make the user wait for the cool background to finish loading.
+    // If they are on a slow network and the images aren't available after 10 seconds then
+    // allow them to continue.
+    Promise.race([
+      this.fetchImages(),
+      timer(10 * 1000).toPromise()
+    ])
+      .then(() => this.doneFetchingImages = true)
+      .catch(console.error);
+
+
+
   }
   async fetchImages(): Promise<void> {
     const albumImageMap = new Map<string, string>();

@@ -15,9 +15,12 @@
     <p>
       HearTheSpear uses Spotify to rank the most popular songs and artists at Florida State University.
     </p>
-    <button mat-raised-button color="primary" class="mat-elevation-z0" routerLink="/top-songs">
-      Get Started
-    </button>
+    <mat-spinner *ngIf="!this.doneFetchingImages" diameter="40" style="margin: 0 auto;"></mat-spinner>
+    <div *ngIf="doneFetchingImages">
+      <button mat-raised-button color="primary" class="mat-elevation-z0" routerLink="/top-songs">
+        Get Started
+      </button>
+    </div>
 
     <p>
     <mat-divider></mat-divider>
