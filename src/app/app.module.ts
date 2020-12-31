@@ -39,6 +39,7 @@ import { PlayableTrackImageComponent } from './playable-track-image/playable-tra
 import { PrivacyComponent } from './privacy/privacy.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ScrollingCompositeModule } from 'scrolling-composite';
+import { RedirectingToSpotifyDialogComponent } from './redirecting-to-spotify-dialog/redirecting-to-spotify-dialog.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { ScrollingCompositeModule } from 'scrolling-composite';
     PlayableTrackImageComponent,
     PrivacyComponent,
     LandingPageComponent,
+    RedirectingToSpotifyDialogComponent,
   ],
   imports: [
     BrowserModule,

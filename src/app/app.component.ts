@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ThankYouForContributingDialogComponent } from './thank-you-for-contributing-dialog/thank-you-for-contributing-dialog.component';
 import { EmailReEntryDialogComponent } from './email-re-entry-dialog/email-re-entry-dialog.component';
 import { NowPlayingService } from './now-playing.service';
+import {RedirectingToSpotifyDialogComponent} from "./redirecting-to-spotify-dialog/redirecting-to-spotify-dialog.component";
 
 @Component({
   selector: 'app-root',
@@ -134,9 +135,9 @@ export class AppComponent implements OnDestroy, OnInit {
     // If we did not just send a verification email from this device, the user must have switched devices.
     // In this case we need to prompt for the email address again because Firebase requires it for sign-in.
     if (!email) {
-      // TODO: Turn this into a pretty Angular Material dialog.
       email = await this.dialog.open(EmailReEntryDialogComponent).afterClosed().toPromise();
     }
+    const redirectingStatusDialog = this.dialog.open(RedirectingToSpotifyDialogComponent);
     const { user } = await this.fireAuth.signInWithEmailLink(email, window.location.href);
     // The user has been successfully signed in.
     // Clear the email address that we saved earlier.
