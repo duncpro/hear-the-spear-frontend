@@ -58,8 +58,8 @@ export class InputEmailAddressDialogComponent implements OnInit {
 
 function emailDomainValidator(validDomains: string[]): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} | null => {
-    const domain = control.value.split('@')[1];
-    const forbidden = !validDomains.includes(domain);
+    const domain: string = control.value.split('@')[1];
+    const forbidden = !validDomains.includes(domain.toLowerCase());
     return forbidden ? { forbiddenEmailAddress: { value: control.value } } : null;
   };
 }
