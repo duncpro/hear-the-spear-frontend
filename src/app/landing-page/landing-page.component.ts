@@ -36,9 +36,9 @@ export class LandingPageComponent implements OnInit, OnDestroy {
       })
     );
 
-    // Make the user wait for the cool background to finish loading.
+    // Make the user waits for the cool background to finish loading.
     // If they are on a slow network and the images aren't available after 10 seconds then
-    // allow them to continue.
+    // allow them to continue regardless.
     Promise.race([
       this.fetchImages(),
       timer(10 * 1000).toPromise()
