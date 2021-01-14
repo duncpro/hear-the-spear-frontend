@@ -8,7 +8,7 @@
     [previewUrl]="track.preview"
     #playPreviewButton
   ></app-playable-track-image>
-  <span mat-line>{{ this.track.name.substring(0, 40) }}</span>
+  <span mat-line>{{ this.track.name.substring(0, 25).padEnd(25) }}</span>
   <span mat-line>{{ this.track.artist }}</span>
   <span *ngIf="showCount" mat-line>
       <ng-lottie *ngIf="showAnimation" [options]="options" width="12px" style="display: inline-block; vertical-align: middle;"></ng-lottie>

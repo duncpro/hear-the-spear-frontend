@@ -12,7 +12,7 @@ export class SongListItemComponent implements OnInit, OnDestroy {
   @Input() rank: number;
   @Input() showCount;
   @Input() showAnimation;
-  private options: AnimationOptions = {
+  options: AnimationOptions = {
     path: './../../assets/now-playing-animation.json',
   };
 

@@ -4,7 +4,7 @@
       {{ this.rank }}.
     </p>
     <img mat-list-avatar src="{{ this.artist.profilePicture }}"/>
-    <span mat-line style="text-align: left">{{ this.artist.name.substring(0, 40) }}</span>
+    <span mat-line style="text-align: left">{{ this.artist.name.substring(0, 25).padEnd(25) }}</span>
     <!-- This empty line makes the transition between lists more smooth -->
     <!-- Everything stays nice and lined up -->
     <!-- See for yourself by removing it -->

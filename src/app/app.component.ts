@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ThankYouForContributingDialogComponent } from './thank-you-for-contributing-dialog/thank-you-for-contributing-dialog.component';
 import { EmailReEntryDialogComponent } from './email-re-entry-dialog/email-re-entry-dialog.component';
 import { NowPlayingService } from './now-playing.service';
-import {RedirectingToSpotifyDialogComponent} from "./redirecting-to-spotify-dialog/redirecting-to-spotify-dialog.component";
+import {RedirectingToSpotifyDialogComponent} from './redirecting-to-spotify-dialog/redirecting-to-spotify-dialog.component';
 
 @Component({
   selector: 'app-root',

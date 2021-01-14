@@ -7,13 +7,24 @@
   right: 0;
 }
 
-.sidenav button {
-  /* Arrange the buttons in a vertical list, rather than a horizontal one. */
-  display: block;
+mat-expansion-panel-header {
+  padding: 0;
+}
 
+mat-expansion-panel {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sidenav button, mat-expansion-panel-header {
   /* Make all buttons fill the maximum amount of horizontal space available. */
   /* Bigger buttons are easier to click on, plus, this keeps the hover effect completely symmetrical. */
   width: 100%;
+}
+
+.sidenav button {
+  /* Arrange the buttons in a vertical list, rather than a horizontal one. */
+  display: block;
 
   /* Make the buttons a little taller. This makes the buttons easier to click on and the UI look less cramped. */
   height: 50px;

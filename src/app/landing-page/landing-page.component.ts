@@ -51,7 +51,7 @@ export class LandingPageComponent implements OnInit, OnDestroy {
   }
   async fetchImages(): Promise<void> {
     const albumImageMap = new Map<string, string>();
-    for (const track of await this.topChartsService.topTracks) {
+    for (const track of await this.topChartsService.getTopTracks('long_term')) {
       albumImageMap.set(track.album, track.artMedium);
     }
 

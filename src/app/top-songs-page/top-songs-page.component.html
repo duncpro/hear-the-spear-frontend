@@ -1,4 +1,4 @@
-<div *ngIf="donePopulatingList">
+<div *ngIf="isLoaded">
   <div *ngIf="!useSuperWideList" style="margin-top: 10px;">
     <mat-card>
       <mat-card-header>
@@ -6,28 +6,61 @@
         <mat-card-title>
           Top Tracks
         </mat-card-title>
-        <mat-card-subtitle>
-          Over the past few weeks
+        <mat-card-subtitle *ngIf="this.spotifyTimeRange === 'short_term'">
+          Over the past four weeks
+        </mat-card-subtitle>
+        <mat-card-subtitle *ngIf="this.spotifyTimeRange === 'medium_term'">
+          Over the past 6 months
+        </mat-card-subtitle>
+        <mat-card-subtitle *ngIf="this.spotifyTimeRange === 'long_term'">
+          Over the past few years
         </mat-card-subtitle>
       </mat-card-header>
 
       <mat-card-content>
         These are the top 50 most played tracks at Florida State University.
-        <br>
-        <br>
-        Click a song to preview.
       </mat-card-content>
     </mat-card>
   </div>
-  <mat-list class="{{ this.useSuperWideList ? 'wide-list' : '' }}">
+  <div *ngIf="useSuperWideList">
+    <div class="timeframe-selector">
+      <mat-icon style="display: inline; vertical-align: middle;">
+        date_range
+      </mat-icon>
+      <button
+        mat-stroked-button
+        [color]="spotifyTimeRange === 'short_term' ? 'primary' : undefined"
+        (click)="setTimeRange('short_term')"
+      >
+        4 weeks
+      </button>
+      <button
+        mat-stroked-button
+        [color]="spotifyTimeRange === 'medium_term' ? 'primary' : undefined"
+        (click)="setTimeRange('medium_term')"
+
+      >
+        6 months
+      </button>
+      <button
+        mat-stroked-button
+        [color]="spotifyTimeRange === 'long_term' ? 'primary' : undefined"
+        (click)="setTimeRange('long_term')"
+      >All time
+      </button>
+    </div>
+    <div style="height: 50px;">
+    </div>
+  </div>
+  <mat-list class="{{ this.useSuperWideList ? 'wide-list' : '' }}" [style]="{ 'height': this.listHeight + 'px' }">
     <div *ngFor="let track of topTracks; index as i">
       <app-song-list-item [track]="track" rank="{{ i + 1 }}">
       </app-song-list-item>
     </div>
-    <app-list-footer></app-list-footer>
+    <app-list-footer [spotifyTimeRange]="this.spotifyTimeRange"></app-list-footer>
   </mat-list>
 </div>
 
-<mat-spinner *ngIf="!donePopulatingList" style="margin-left: auto; margin-right: auto; margin-top: 35%;">
+<mat-spinner *ngIf="!isLoaded" style="margin-left: auto; margin-right: auto; margin-top: 35%;">
 
 </mat-spinner>

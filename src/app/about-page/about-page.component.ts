@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InputEmailAddressDialogComponent } from '../input-email-address-dialog/input-email-address-dialog.component';
-import {Subscription} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {ScreenSizeService} from '../screen-size.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class AboutPageComponent implements OnInit {
   isLargeScreen: boolean;
   constructor(
     private screenSizeService: ScreenSizeService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) {
     this.isLargeScreen = !this.screenSizeService.isScreenSmall();
     this.screenSizeSubscription = this.screenSizeService.shouldUseMobileUI

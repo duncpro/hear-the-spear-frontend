@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import { ScreenSizeService } from '../screen-size.service';
 import { Subscription } from 'rxjs';
 
@@ -10,10 +10,10 @@ import { Subscription } from 'rxjs';
 export class ListFooterComponent implements OnInit, OnDestroy {
   private screenSizeSubscription: Subscription;
   public isLargeScreen: boolean;
+  @Input() spotifyTimeRange: string;
   constructor(
     public screenSizeService: ScreenSizeService
   ) {
-
   }
 
   ngOnInit(): void {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AngularFireFunctions} from "@angular/fire/functions";
 
 @Component({
   selector: 'app-share-card',
@@ -6,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./share-card.component.css']
 })
 export class ShareCardComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {

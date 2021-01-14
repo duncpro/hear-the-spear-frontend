@@ -8,39 +8,38 @@
     <mat-sidenav #sidenav
                  class="sidenav mat-elevation-z24"
                  mode="{{ this.shouldUseCollapsibleSidenav ? 'over' : 'side' }}"
-                 opened="{{ !this.shouldUseCollapsibleSidenav }}">
+                 opened="{{ !this.shouldUseCollapsibleSidenav }}"
+    >
 
       <img class="center-logo" src="./../assets/logo.png">
       <div class="app-title primary-color">Hear The Spear</div>
       <div class="primary-color" style="text-align: center;">Trending Music at FSU</div>
       <br>
-      <a routerLink="top-songs">
-        <button
-          mat-button
-          color="{{ this.currentRoute.startsWith('top-songs') ? 'primary' : '' }}"
-        >FSU Top 50</button>
-      </a>
-      <a routerLink="top-artists">
-        <button
-          mat-button
-          color="{{ this.currentRoute.startsWith('top-artists') ? 'primary' : '' }}"
-        >Popular Artists</button>
-      </a>
-      <a [routerLink]="showNowPlayingNavItem ? 'now-playing' : currentRoute">
-        <button
-          mat-button
-          color="{{ this.currentRoute.startsWith('now-playing') ? 'primary' : '' }}"
-          [disabled]="!showNowPlayingNavItem"
-        >Now Playing</button>
-      </a>
-      <a routerLink="about">
-        <button
-          mat-button
-          color="{{ this.currentRoute.startsWith('about') ? 'primary' : '' }}"
-        >
-          Participate
-        </button>
-      </a>
+      <button
+        routerLink="top-songs"
+        mat-button
+        color="{{ this.currentRoute.startsWith('top-songs') ? 'primary' : '' }}"
+      >
+        FSU Top 50
+      </button>
+      <button
+        routerLink="top-artists"
+        mat-button
+        color="{{ this.currentRoute.startsWith('top-artists') ? 'primary' : '' }}"
+      >Popular Artists</button>
+      <button
+        [routerLink]="showNowPlayingNavItem ? 'now-playing' : currentRoute"
+        mat-button
+        color="{{ this.currentRoute.startsWith('now-playing') ? 'primary' : '' }}"
+        [disabled]="!showNowPlayingNavItem"
+      >Now Playing</button>
+      <button
+        routerLink="about"
+        mat-button
+        color="{{ this.currentRoute.startsWith('about') ? 'primary' : '' }}"
+      >
+        Participate
+      </button>
       <div style="text-align: center; bottom:10px; position: absolute; width: 100%">
         <a routerLink="privacy">
           Privacy

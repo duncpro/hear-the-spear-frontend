@@ -1,9 +1,11 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { ScreenSizeService } from '../screen-size.service';
 import { Subscription } from 'rxjs';
 import { Track } from '../track';
 import { TopChartsService } from '../top-charts.service';
 import { Router } from '@angular/router';
+
+type SpotifyTimeRange = 'short_term' | 'medium_term' | 'long_term';
 
 @Component({
   selector: 'app-top-songs-page',
@@ -14,23 +16,26 @@ export class TopSongsPageComponent implements OnInit, OnDestroy {
   useSuperWideList: boolean;
   screenSizeSubscription: Subscription;
   topTracks: Track[] = [];
-  donePopulatingList = false;
+  listHeight: number;
+  spotifyTimeRange: SpotifyTimeRange;
+  isLoaded: boolean;
   constructor(
     public screenSizeService: ScreenSizeService,
     public topCharts: TopChartsService,
     private router: Router
   ) {}
   ngOnInit(): void {
-    this.screenSizeSubscription = this.screenSizeService.shouldUseMobileUI.subscribe(
-      (usingMobileUI) => this.useSuperWideList = !usingMobileUI
-    );
-    this.useSuperWideList = !this.screenSizeService.isScreenSmall();
-    this.populateList();
+    this.screenSizeSubscription = this.screenSizeService.windowHeight.subscribe((height) => {
+      this.useSuperWideList = !this.screenSizeService.isScreenSmall();
+      this.listHeight = height - 50;
+    });
+    this.setTimeRange('short_term');
   }
-  async populateList(): Promise<void> {
-    this.topTracks = (await this.topCharts.topTracks)
-      .filter(it => it.count > 1); // Only show tracks that more than one person likes
-    this.donePopulatingList = true;
+  async setTimeRange(timeRange: SpotifyTimeRange): Promise<void> {
+    this.isLoaded = false;
+    this.spotifyTimeRange = timeRange;
+    this.topTracks = await this.topCharts.getTopTracks(timeRange);
+    this.isLoaded = true;
   }
   ngOnDestroy(): void {
     this.screenSizeSubscription.unsubscribe();

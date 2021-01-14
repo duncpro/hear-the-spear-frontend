@@ -7,14 +7,22 @@ import { Artist } from './artist';
   providedIn: 'root'
 })
 export class TopChartsService {
-  topTracks: Promise<Track[]>;
-  topArtists: Promise<Artist[]>;
+  private readonly requestTopTracks;
+  private readonly requestTopArtists;
   constructor(
     private fireFunctions: AngularFireFunctions
   ) {
-    const getFSUTopTracks = this.fireFunctions.httpsCallable('getFSUTopTracks');
-    const getFSUTopArtists = this.fireFunctions.httpsCallable('getFSUTopArtists');
-    this.topTracks = getFSUTopTracks({}).toPromise();
-    this.topArtists = getFSUTopArtists({}).toPromise();
+    this.requestTopTracks = this.fireFunctions.httpsCallable('getFSUTopTracks');
+    this.requestTopArtists = this.fireFunctions.httpsCallable('getFSUTopArtists');
+  }
+  public getTopArtists(): Promise<Artist[]> {
+    return this.requestTopArtists({
+      spotifyTimeRange: 'short_term'
+    }).toPromise();
+  }
+  public getTopTracks(timeRange: string): Promise<Track[]> {
+    return this.requestTopTracks({
+      spotifyTimeRange: timeRange
+    }).toPromise();
   }
 }

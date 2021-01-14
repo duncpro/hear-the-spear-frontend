@@ -30,7 +30,8 @@ export class TopArtistsPageComponent implements OnInit, OnDestroy {
     this.populateList();
   }
   async populateList(): Promise<void> {
-    this.topArtists = await this.topCharts.topArtists;
+    this.topArtists = await this.topCharts.getTopArtists();
+    console.log(this.topArtists);
     this.donePopulatingList = true;
   }
   ngOnDestroy(): void {
