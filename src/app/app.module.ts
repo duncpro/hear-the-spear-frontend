@@ -40,9 +40,6 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ScrollingCompositeModule } from 'scrolling-composite';
 import { RedirectingToSpotifyDialogComponent } from './redirecting-to-spotify-dialog/redirecting-to-spotify-dialog.component';
-import {MatButtonToggleModule} from "@angular/material/button-toggle";
-import {MatExpansionModule} from "@angular/material/expansion";
-import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -67,28 +64,25 @@ import {MatMenuModule} from "@angular/material/menu";
     LandingPageComponent,
     RedirectingToSpotifyDialogComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSidenavModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatListModule,
-    MatCardModule,
-    MatDialogModule,
-    MatInputModule,
-    MatFormFieldModule,
-    ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    MatProgressSpinnerModule,
-    LottieModule.forRoot({player: playerFactory}),
-    ScrollingCompositeModule,
-    MatButtonToggleModule,
-    MatExpansionModule,
-    MatMenuModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatSidenavModule,
+        MatButtonModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatListModule,
+        MatCardModule,
+        MatDialogModule,
+        MatInputModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        MatProgressSpinnerModule,
+        LottieModule.forRoot({player: playerFactory}),
+        ScrollingCompositeModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

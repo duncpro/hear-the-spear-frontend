@@ -49,3 +49,9 @@ mat-expansion-panel {
   /* Most impportantly, the centered title */
   position: fixed;
 }
+
+@media screen and (max-height: 500px) {
+  .footer {
+    visibility: hidden;
+  }
+}
