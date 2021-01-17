@@ -1,4 +1,4 @@
-<mat-list-item (click)="playPreviewButton.togglePreview()" style="cursor: pointer;">
+<mat-list-item (click)="playPreviewButton.togglePreview()" style="cursor: pointer; width: 350px; text-overflow: ellipsis;">
     <span  *ngIf="rank" mat-list-icon style="padding-right: 15px;" class="primary-color">
       {{ this.rank }}.
     </span>
@@ -8,7 +8,7 @@
     [previewUrl]="track.preview"
     #playPreviewButton
   ></app-playable-track-image>
-  <span mat-line>{{ this.track.name.substring(0, 25).padEnd(25) }}</span>
+  <span mat-line>{{ this.track.name }}</span>
   <span mat-line>{{ this.track.artist }}</span>
   <span *ngIf="showCount" mat-line>
       <ng-lottie *ngIf="showAnimation" [options]="options" width="12px" style="display: inline-block; vertical-align: middle;"></ng-lottie>

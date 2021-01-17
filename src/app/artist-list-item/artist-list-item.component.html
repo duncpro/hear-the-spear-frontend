@@ -1,10 +1,10 @@
 <a href="{{ this.artist.link }}" target="_blank">
-  <mat-list-item>
+  <mat-list-item style="width: 300px; text-overflow: ellipsis;">
     <p mat-list-icon style="padding-right: 15px;" class="primary-color">
       {{ this.rank }}.
     </p>
     <img mat-list-avatar src="{{ this.artist.profilePicture }}"/>
-    <span mat-line style="text-align: left">{{ this.artist.name.substring(0, 25).padEnd(25) }}</span>
+    <span mat-line style="text-align: left">{{ this.artist.name }}</span>
     <!-- This empty line makes the transition between lists more smooth -->
     <!-- Everything stays nice and lined up -->
     <!-- See for yourself by removing it -->

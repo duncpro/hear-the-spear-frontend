@@ -40,6 +40,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ScrollingCompositeModule } from 'scrolling-composite';
 import { RedirectingToSpotifyDialogComponent } from './redirecting-to-spotify-dialog/redirecting-to-spotify-dialog.component';
+import { MixesPageComponent } from './mixes-page/mixes-page.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { RedirectingToSpotifyDialogComponent } from './redirecting-to-spotify-di
     PrivacyComponent,
     LandingPageComponent,
     RedirectingToSpotifyDialogComponent,
+    MixesPageComponent,
   ],
     imports: [
         BrowserModule,
