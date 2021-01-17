@@ -1,6 +1,5 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {BehaviorSubject, fromEvent, Observable, Subscription} from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import {BehaviorSubject, fromEvent, merge, Observable, Subscription} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,10 @@ export class ScreenSizeService implements OnDestroy {
   windowHeight = new BehaviorSubject(window.innerHeight);
   resizeSubscription: Subscription;
   constructor() {
-    this.resizeSubscription = fromEvent(window, 'resize').subscribe(() => {
+    this.resizeSubscription = merge(
+      fromEvent(window, 'resize'),
+      fromEvent(window, 'orientationchange')
+    ).subscribe(() => {
       this.shouldUseMobileUI.next(this.isScreenSmall());
       this.windowHeight.next(window.innerHeight);
     });
