@@ -13,6 +13,7 @@
   position: fixed;
   right: 10px;
   top: 10px;
+  background: inherit;
 }
 
 .timeframe-selector button {

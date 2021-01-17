@@ -1,4 +1,4 @@
-<div [ngClass]="this.isLargeScreen ? 'constrained' : 'fill'">
+<div class="footer" [ngClass]="this.isLargeScreen ? 'constrained' : 'fill'">
   <!-- No need to show participate card on large screens because the participate button is already visible -->
   <div *ngIf="!this.isLargeScreen">
     <app-participate-card></app-participate-card>

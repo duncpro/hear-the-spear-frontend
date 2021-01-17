@@ -2,3 +2,12 @@
   max-width: 300px;
   margin-right: 5px;
 }
+
+/* Undesired vertical scroll behavior on screens which are too small to fit the list footer */
+/* Hide the list footer to prevent vertical scroll */
+@media screen and (max-height: 440px) {
+  .footer {
+    visibility: hidden;
+    position: fixed;
+  }
+}
